@@ -1062,7 +1062,7 @@ async def on_message(message):
         embed.add_field(name="$yalan", value="Yalan makinesi.")
         await message.channel.send(content=None, embed=embed)
 
-client.run('NzcwMjQxODEwODI3NTc1MzA3.X5atlg.h3DB6P2nj9tHtnROfsUDV31Wok8')
+client.run('TOKEN')
 
 
 
