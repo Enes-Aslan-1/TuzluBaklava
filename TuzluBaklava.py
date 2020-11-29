@@ -159,20 +159,17 @@ async def on_message(message):
         await message.channel.send(content=None, embed=embed)
 
     if message.content.startswith('$bitcoin'):
-        url = "https://piyasa.paratic.com/kripto-coin/bitcoin/"
-        response = requests.get(url).content
-        soup = BeautifulSoup(response,"html.parser")
-        dolarveri = soup.find("div", attrs={"class":"ng_price ng_price_alis"})
-        dolarveri1 = soup.find("div", attrs={"class":"ng_price ng_price_satis"})
-        dolarveri2 = soup.find("div", attrs={"class":"ng_price ng_price_degisim"})
-        embed = discord.Embed(title="Güncel Dolar Verileri: ", description="💵💵💵💵💵💵💵💵")
+        pasteURL5 = "https://tr.investing.com/currencies/btc-try"
+        data5 = urlopen(Request(pasteURL5, headers={'User-Agent': 'Mozilla'})).read()
+        parse5 = BeautifulSoup(data5, "html.parser" )
+        for bitcoin in parse5.find_all('span', id="last_last"):
+            liste5 = list(bitcoin)
+        embed = discord.Embed(title="Güncel Bitcoin Kuru: " + str(liste5), description=time.strftime("%X %d/%m/%Y"))
         embed.set_author(name=message.author.name, icon_url=message.author.avatar_url)
         embed.set_footer(text='Piyasaların kapalı olduğu gün ve saatlerde veri akışı bulunmamaktadır.')
         embed.set_thumbnail(url='https://cdn.discordapp.com/attachments/771298832650338356/779835417087311872/sorunun-cozumu-dolar-bulmak_.png')
-        embed.add_field(name=dolarveri.text, value="💵💵💵💵")
-        embed.add_field(name=dolarveri1.text, value="💵💵💵💵")
-        embed.add_field(name=dolarveri2.text, value="💵💵💵💵")
         await message.channel.send(content=None, embed=embed)
+
 
     if message.content.startswith('$gr altın'):
         url = "https://piyasa.paratic.com/altin/gram/"
