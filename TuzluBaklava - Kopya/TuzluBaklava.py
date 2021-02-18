@@ -396,4 +396,4 @@ bot.load_extension("cogs.info2")
 bot.load_extension("cogs.admin")
 bot.load_extension("cogs.küfürengel")
 
-bot.run("NzcwMjQxODEwODI3NTc1MzA3.X5atlg.ZHCZ_fc6O8DxlciopLJkbmu3nDg")
+bot.run("TOKEN")
